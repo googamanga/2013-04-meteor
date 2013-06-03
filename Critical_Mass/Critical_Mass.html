@@ -1,0 +1,102 @@
+<head>
+  <title>Critical_Mass</title>
+</head>
+
+<body>
+  {{>container}}
+</body>
+
+<template name='container'>
+  <div class="container">
+    {{#if loginScreen}}
+      {{>new_user}}
+    {{else}}
+      {{>main}}
+    {{/if}}
+   </div>
+</template>
+
+<template name='main'>
+  <div name='main'>
+    {{>title_bar}}
+    <div class="row">
+      {{>users}}
+      <div class='span6 column2'>
+        {{>ask_question}}
+        {{>wall}}
+      </div>
+      <div class='span3 column3'>
+        <h3>Connections</h3>
+        {{>subs}}
+        {{>groups}}
+      </div>
+    </div>
+  </div
+</template>
+
+<template name="title_bar">
+  <div class="row title_bar">
+    <div class='span6'><h1>Critical Mass</h1></div>
+    <div class='span6'><h3>Welcome {{loggedInUser}}!</h3></div>
+  </div>
+</template>
+
+<template name="users">
+  <div class="span3 users">
+  <h3>Users</h3>
+    {{#each users}}
+      {{> user}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="user">
+  <div class="span3 user">
+    {{name}}
+  </div>
+</template>
+
+<template name="ask_question">
+  <div class="ask_question">
+    <h3>What's up?!</h3>
+    <input type='text' id="user_question" class='span5'>
+    <input type="button" class="add" value="Ask!" />
+  </div>
+</template>
+
+<template name="wall">
+  <div class="wall">
+    <h3>The Wall</h3>
+    {{#each questions}}
+      {{> question}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="question">
+  <div class=question>
+    <div class="span5">{{name}}</div>
+    <div class="span5">{{question}}</div>
+  </div>
+</template>
+
+<template name="subs">
+  <div class="span2 subs">
+    <div>sub1</div>
+    <div>sub2</div>
+  </div>
+</template>
+
+<template name="groups">
+  <div class="span2 groups">
+    <div>group1</div>
+    <div>group2</div>
+  </div>
+</template>
+
+<template name="new_user">
+  <div class="new_user">
+    <input class='span1' id="new_user_name" type="text" placeholder="name"/>
+    <input type="button" class="add" value="Add User" />
+  </div>
+</template>
